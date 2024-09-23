@@ -1,7 +1,10 @@
+
+import 'package:depci_grad_project/Pages/Records_Nav.dart';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'Records_Nav.dart';
+
+import 'Profie_Screen.dart';
 import 'Veichles_Nav.dart';
+import 'home_page.dart';
 
 class BottomPage extends StatefulWidget {
   const BottomPage({super.key});
@@ -15,6 +18,8 @@ class _BottomPageState extends State<BottomPage> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
@@ -22,6 +27,7 @@ class _BottomPageState extends State<BottomPage> {
           HomePage(), // Your HomePage widget
           VeichlesNav(), // Your VeichlesNav widget
           RecordsNav(), // Your RecordsNav widget
+          ProfileScreen(), // Your ProfileScreen widget
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -41,8 +47,12 @@ class _BottomPageState extends State<BottomPage> {
             label: 'Vehicles',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.assignment),
+            icon: Icon(Icons.receipt),
             label: 'Records',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outlined),
+            label: 'Profile',
           ),
         ],
         selectedItemColor: Colors.blue,

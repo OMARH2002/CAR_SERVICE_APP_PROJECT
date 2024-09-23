@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Hello, Omar Hany', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      Text('Hello, Steve ', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                       Row(
                         children: [
                           Icon(Icons.location_on_sharp, size: 16, color: Colors.grey),
@@ -76,9 +76,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   CircleAvatar(
                     child: GestureDetector(
-                      child: Image.asset('assets/images/Profile-Icon.png'),
+                      child: Image.asset('assets/images/person.png'),
                       onTap: () {
-                        Navigator.pushNamed(context, '/ProfileData');
+                        Navigator.pushNamed(context, '/ProfileScreen');
                       },
                     ),
                     radius: 30,
