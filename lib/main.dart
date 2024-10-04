@@ -1,4 +1,6 @@
+import 'package:depci_grad_project/Pages/BOOKING_FORM.dart';
 import 'package:depci_grad_project/Pages/Bottom_Nav.dart';
+import 'package:depci_grad_project/Pages/Checkout_one.dart';
 import 'package:depci_grad_project/Pages/Edit_Profile_Data.dart';
 import 'package:depci_grad_project/Pages/car_service.dart';
 import 'package:depci_grad_project/theme/ThemeNotifier.dart';
@@ -62,6 +64,8 @@ class MyApp extends StatelessWidget {
         '/CarFormPage': (context) => CarFormPage(),
         '/ProfileScreen': (context) => ProfileScreen(),
         '/ProfileDataDisplay': (context) => ProfileDataDisplay(),
+        '/CheckoutOne':(context)=>CheckoutScreenOne(),
+        '/bookingform':(context)=>booking()
 
       },
     );

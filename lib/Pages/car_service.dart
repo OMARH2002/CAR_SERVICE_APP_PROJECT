@@ -1,3 +1,4 @@
+import 'package:depci_grad_project/Pages/Checkout_one.dart';
 import 'package:flutter/material.dart';
 
 class CarService extends StatefulWidget {
@@ -6,76 +7,13 @@ class CarService extends StatefulWidget {
 }
 
 class _CarServiceState extends State<CarService> {
-  List<Map<String, String>> cart = [];
-  bool _isCartVisible = false;
 
-  void _addToCart(Map<String, String> service) {
-    setState(() {
-      cart.add(service);
-      _isCartVisible = true; // Show cart when an item is added
-    });
-  }
-
-  void _removeFromCart(int index) {
-    setState(() {
-      cart.removeAt(index);
-      if (cart.isEmpty) {
-        _isCartVisible = false; // Hide cart if no items are left
-      }
-    });
-    _refreshCart(context); // Refresh the cart when an item is removed
-  }
-
-  void _refreshCart(BuildContext context) {
-    Navigator.pop(context); // Close the current BottomSheet
-    _showCart(context); // Reopen the BottomSheet with updated cart
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Car Services'),
-        actions: [
-          if (_isCartVisible)
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.shopping_cart,size: 39,),
-                  onPressed: () {
-                    _showCart(context);
-                  },
-                ),
-                if (cart.isNotEmpty)
-                  Positioned(
-                    right: 6,
-                    top: 6,
-                    child: Container(
-                      padding: EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        shape: BoxShape.circle,
-                      ),
-                      constraints: BoxConstraints(
-                        minWidth: 24,
-                        minHeight: 24,
-                      ),
-                      child: Center(
-                        child: Text(
-                          cart.length.toString(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -90,13 +28,10 @@ class _CarServiceState extends State<CarService> {
                 '1 Month Warranty',
                 'Includes 9 Services',
               ],
-              price: '3000 EGP',
+              price: ' Est: 3000 EGP',
               imageUrl: 'assets/images/Basic_Service.jpg',
               onAdd: () {
-                _addToCart({
-                  'title': 'Basic Service',
-                  'price': '3000 EGP',
-                });
+                Navigator.pushNamed(context, '/bookingform');
               },
             ),
             SizedBox(height: 10),
@@ -110,13 +45,10 @@ class _CarServiceState extends State<CarService> {
                 '1 Month Warranty',
                 'Includes 15 Services',
               ],
-              price: '7000 EGP',
+              price: ' Est: 7000 EGP',
               imageUrl: 'assets/images/Standard_Service.jpg',
               onAdd: () {
-                _addToCart({
-                  'title': 'Standard Service',
-                  'price': '7000 EGP',
-                });
+                Navigator.pushNamed(context, '/bookingform');
               },
             ),
             SizedBox(height: 10),
@@ -130,13 +62,10 @@ class _CarServiceState extends State<CarService> {
                 '1 Month Warranty',
                 'Includes 20 Services',
               ],
-              price: '15000 EGP',
+              price: ' Est: 15000 EGP',
               imageUrl: 'assets/images/Comprehensive _service.jpg',
               onAdd: () {
-                _addToCart({
-                  'title': 'Comprehensive Service',
-                  'price': '15000 EGP',
-                });
+                Navigator.pushNamed(context, '/bookingform');
               },
             ),
           ],
@@ -195,7 +124,7 @@ class _CarServiceState extends State<CarService> {
               ),
             ),
 
-            // Image and ADD Button
+            // Image and book Button
             SizedBox(width: 16), // Add some space between text and image
             Column(
               children: [
@@ -217,7 +146,7 @@ class _CarServiceState extends State<CarService> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: Text('ADD', style: TextStyle(color: Colors.black)),
+                  child: Text('Book', style: TextStyle(color: Colors.black)),
                 ),
               ],
             ),
@@ -227,51 +156,5 @@ class _CarServiceState extends State<CarService> {
     );
   }
 
-  // Show cart as a modal bottom sheet
-  void _showCart(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true, // Ensure the bottom sheet can scroll
-      builder: (BuildContext context) {
-        return Container(
-          height: 400, // Set a fixed height for the BottomSheet
-          child: Column(
-            children: [
-              ListTile(
-                title: Text('Shopping Cart', style: TextStyle(fontSize: 24)),
-                trailing: IconButton(
-                  icon: Icon(Icons.clear),
-                  onPressed: () {
-                    Navigator.pop(context); // Close the bottom sheet
-                  },
-                ),
-              ),
-              Divider(),
-              Expanded( // Make the cart content scrollable
-                child: cart.isEmpty
-                    ? Center(child: Text('Your cart is empty'))
-                    : SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(cart.length, (index) {
-                      final service = cart[index];
-                      return ListTile(
-                        title: Text(service['title']!),
-                        subtitle: Text(service['price']!),
-                        trailing: IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () {
-                            _removeFromCart(index);
-                          },
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
+
   }
-}
