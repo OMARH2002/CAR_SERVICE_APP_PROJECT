@@ -118,12 +118,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
-                children: [
-                  buildProfileOption(
-                    icon: Icons.security,
-                    title: 'Security',
+                children: [ GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                        context,'/bookingdata');
+                  },
+                  child: buildProfileOption(
+                    icon: Icons.book_online_outlined,
+                    title: 'Bookings',
                     textColor: textColor,
                   ),
+                ),
                   Divider(),
                   buildProfileOption(
                     icon: Icons.brightness_6,

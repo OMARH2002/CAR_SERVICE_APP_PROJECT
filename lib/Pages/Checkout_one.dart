@@ -9,14 +9,22 @@ class _CheckoutScreenState extends State<CheckoutScreenOne> {
   String? selectedProvince;
   String? selectedCity;
 
-  int currentStep = 1; // To track which step you're on
+  final cities = ['Cairo', 'Alexandria', 'Matrouh'];
 
-  final provinces = ['Province 1', 'Province 2', 'Province 3'];
-  final cities = ['City 1', 'City 2', 'City 3'];
+  // A map linking cities to provinces
+  final Map<String, List<String>> cityToProvinces = {
+    'Cairo': ['Province 1', 'Province 2'],
+    'Alexandria': ['Province 3', 'Province 4'],
+    'Matrouh': ['Province 5', 'Province 6'],
+  };
+
+  // This will hold the available provinces based on the selected city
+  List<String> provinces = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true, // Important to prevent bottom overflow
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
@@ -24,15 +32,14 @@ class _CheckoutScreenState extends State<CheckoutScreenOne> {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
-            // Handle back button press
           },
         ),
         title: Text(
           'Checkout',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black,),
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView( // Wrapping content to make it scrollable
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +53,7 @@ class _CheckoutScreenState extends State<CheckoutScreenOne> {
                     Icon(
                       Icons.local_shipping,
                       size: 30,
-                      color: currentStep >= 1 ? Colors.green : Colors.grey, // Shipping icon color change
+                      color: Colors.green, // Shipping icon color change
                     ),
                     Text('Shipping'),
                   ],
@@ -59,7 +66,7 @@ class _CheckoutScreenState extends State<CheckoutScreenOne> {
                     Icon(
                       Icons.payment,
                       size: 30,
-                      color: currentStep >= 2 ? Colors.green : Colors.grey, // Payment icon color change
+                      color: Colors.grey, // Payment icon color change
                     ),
                     Text('Payment'),
                   ],
@@ -72,9 +79,9 @@ class _CheckoutScreenState extends State<CheckoutScreenOne> {
                     Icon(
                       Icons.check_circle_outline,
                       size: 30,
-                      color: currentStep == 3 ? Colors.green : Colors.grey, // Review icon color change
+                      color: Colors.grey, // Review icon color change
                     ),
-                    Text('Review'),
+                    Text('Finish'),
                   ],
                 ),
               ],
@@ -116,6 +123,33 @@ class _CheckoutScreenState extends State<CheckoutScreenOne> {
             ),
             SizedBox(height: 20),
 
+            // City Dropdown
+            DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                labelText: 'Select City',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8), // Rounded borders
+                ),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16),
+              ),
+              value: selectedCity,
+              onChanged: (value) {
+                setState(() {
+                  selectedCity = value;
+                  // Update the provinces list based on selected city
+                  provinces = cityToProvinces[value!]!;
+                  selectedProvince = null; // Reset selected province
+                });
+              },
+              items: cities.map((city) {
+                return DropdownMenuItem(
+                  value: city,
+                  child: Text(city),
+                );
+              }).toList(),
+            ),
+            SizedBox(height: 20),
+
             // Province Dropdown
             DropdownButtonFormField<String>(
               decoration: InputDecoration(
@@ -131,34 +165,11 @@ class _CheckoutScreenState extends State<CheckoutScreenOne> {
                   selectedProvince = value;
                 });
               },
+              // Show only the provinces related to the selected city
               items: provinces.map((province) {
                 return DropdownMenuItem(
                   value: province,
                   child: Text(province),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 20),
-
-            // City Dropdown
-            DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                labelText: 'Select City',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8), // Rounded borders
-                ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 16),
-              ),
-              value: selectedCity,
-              onChanged: (value) {
-                setState(() {
-                  selectedCity = value;
-                });
-              },
-              items: cities.map((city) {
-                return DropdownMenuItem(
-                  value: city,
-                  child: Text(city),
                 );
               }).toList(),
             ),
@@ -186,28 +197,26 @@ class _CheckoutScreenState extends State<CheckoutScreenOne> {
                 contentPadding: EdgeInsets.symmetric(horizontal: 16),
               ),
             ),
-            Spacer(),
+            SizedBox(height: 20),
 
             // Confirm Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    if (currentStep < 3) {
-                      currentStep += 1; // Move to next step
-                    } else {
-                      // Handle final confirmation
-                    }
-                  });
+                  Navigator.pushNamed(context, '/CheckoutTwo');
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(16), backgroundColor: Colors.black,
+                  padding: EdgeInsets.all(16),
+                  backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30), // Rounded button
                   ),
                 ),
-                child: Text(currentStep < 3 ? 'Next' : 'Confirm', style: TextStyle(fontSize: 18)),
+                child: Text(
+                  'Next',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
               ),
             ),
           ],

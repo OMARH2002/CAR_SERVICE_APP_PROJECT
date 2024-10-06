@@ -91,18 +91,14 @@ class _TyresState extends State<Tyres> {
               description: [
                 '205/55 R16',
                 'Versatile option for moderate climates',
-                'Compatible With:',
-                    'Toyota Corolla'
-                ,'Honda Civic',
-                'Ford Escape',
                 '30,000 Km Warranty'
               ],
-              price: '5000 EGP',
+              price: '10,000 EGP Per Wheel',
               imageUrl: 'assets/images/205-55 R16.jpg',
               onAdd: () {
                 _addToCart({
                   'title': '205/55 R16',
-                  'price': '5000 EGP Per Wheel',
+                  'price': '10,000 EGP',
                 });
               },
             ),
@@ -114,10 +110,6 @@ class _TyresState extends State<Tyres> {
               description: [
                 '225/60 R17',
                 ' Great balance between comfort and performance',
-                'Compatible with:',
-                'Nissan Rogue',
-                'Subaru Forester',
-                'Volkswagen Tiguan',
                 '40,000 Km Warranty',
               ],
               price: '9500 EGP Per Wheel',
@@ -133,19 +125,18 @@ class _TyresState extends State<Tyres> {
 
             // Comprehensive Service
             buildServiceCard(
-              title: 'Comprehensive Service',
+              title: 'Winter Tyre',
               description: [
-                'Every 20000 Kms/1 Year',
-                'Takes 8 Hours',
-                '1 Month Warranty',
-                'Includes 20 Services',
+                '195/65R15',
+                ' Ideal for compact cars in snowy condition',
+                '35,000 KM Warranty',
               ],
-              price: '15000 EGP',
-              imageUrl: 'assets/images/Comprehensive _service.jpg',
+              price: '7000 EGP Per Wheel',
+              imageUrl: 'assets/images/195-65R15.jpg',
               onAdd: () {
                 _addToCart({
-                  'title': 'Comprehensive Service',
-                  'price': '15000 EGP',
+                  'title': '195/65R15',
+                  'price': '7000 EGP',
                 });
 
               },
@@ -154,22 +145,94 @@ class _TyresState extends State<Tyres> {
 
     // Comprehensive Service
           buildServiceCard(
-          title: 'Comprehensive Service',
+          title: 'Winter Tyre',
           description: [
-          'Every 20000 Kms/1 Year',
-          'Takes 8 Hours',
-          '1 Month Warranty',
-          'Includes 20 Services',
+          '215/70R16',
+          'Suitable for SUVs and light trucks',
+          '35,000 KM Warranty',
           ],
-          price: '15000 EGP',
-          imageUrl: 'assets/images/Comprehensive _service.jpg',
+          price: '8500 EGP Per Wheel',
+          imageUrl: 'assets/images/215-70R16.png',
           onAdd: () {
             _addToCart({
-              'title': 'Comprehensive Service',
-              'price': '15000 EGP',
+              'title': '215/70R16',
+              'price': '8500 EGP',
             });
           }),
+            SizedBox(height: 10),
+
+            // Comprehensive Service
+            buildServiceCard(
+                title: 'Summer Tyre',
+                description: [
+                  '245/45R18',
+                  'High-performance tyre for sport cars',
+                  '60,000 KM Warranty',
+                ],
+                price: '12,500 EGP Per Wheel',
+                imageUrl: 'assets/images/245-45R18.jpg',
+                onAdd: () {
+                  _addToCart({
+                    'title': '245/45R18',
+                    'price': '12,500 EGP',
+                  });
+                }),
+            SizedBox(height: 10),
+
+            // Comprehensive Service
+            buildServiceCard(
+                title: 'Summer Tyre',
+                description: [
+                  '225/50R17',
+                  'Offers excellent handling and braking',
+                  '60,000 KM Warranty',
+                ],
+                price: '10,500 EGP Per Wheel',
+                imageUrl: 'assets/images/225-50R17.png',
+                onAdd: () {
+                  _addToCart({
+                    'title': '225/50R17',
+                    'price': '10,500 EGP',
+                  });
+                }),
+            SizedBox(height: 10),
+
+            // Comprehensive Service
+            buildServiceCard(
+                title: 'Performance Tyre',
+                description: [
+                  '275/30R20',
+                  'Designed for supercars with enhanced grip',
+                  '40,000 KM Warranty',
+                ],
+                price: '18,000 EGP Per Wheel',
+                imageUrl: 'assets/images/275-30R20.png',
+                onAdd: () {
+                  _addToCart({
+                    'title': '275/30R20',
+                    'price': '18,000 EGP',
+                  });
+                }),
+            SizedBox(height: 10),
+
+            // Comprehensive Service
+            buildServiceCard(
+                title: 'Performance Tyre',
+                description: [
+                  '245/35R19',
+                  'Great for luxury vehicles aiming for sporty performance',
+                  '50,000 KM Warranty',
+                ],
+                price: '25,000 EGP Per Wheel',
+                imageUrl: 'assets/images/245-35R19.png',
+                onAdd: () {
+                  _addToCart({
+                    'title': '245/35R19',
+                    'price': '25,000 EGP',
+                  });
+                }),
      ] ),
+
       ) );
   }
 

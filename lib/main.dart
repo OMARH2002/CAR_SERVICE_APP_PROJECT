@@ -6,12 +6,15 @@ import 'package:depci_grad_project/Pages/car_service.dart';
 import 'package:depci_grad_project/theme/ThemeNotifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'Pages/BOOKINGS.dart';
 import 'Pages/Car_data_entery.dart';
 import 'Pages/Denting.dart';
 import 'Pages/OilChange.dart';
+import 'Pages/Payment_Tab.dart';
 import 'Pages/Profie_Screen.dart';
 import 'Pages/ProfileDataDisplay.dart';
 import 'Pages/Records_Nav.dart';
+import 'Pages/Review_tab.dart';
 import 'Pages/Tyres.dart';
 import 'Pages/Veichles_Nav.dart';
 import 'Pages/ac.dart';
@@ -52,6 +55,7 @@ class MyApp extends StatelessWidget {
         '/Denting': (context) => Denting(),
         '/AC': (context) => AC(),
         '/Interior': (context) => Interior(),
+        '/Exterior':(context)=>Exterior(),
         '/Batteries': (context) => Batteries(),
         '/Insurance': (context) => Insurance(),
         '/Windsheild': (context) => Windsheild(),
@@ -65,7 +69,10 @@ class MyApp extends StatelessWidget {
         '/ProfileScreen': (context) => ProfileScreen(),
         '/ProfileDataDisplay': (context) => ProfileDataDisplay(),
         '/CheckoutOne':(context)=>CheckoutScreenOne(),
-        '/bookingform':(context)=>booking()
+        '/CheckoutTwo':(context)=>CheckoutScreenTwo(),
+        '/OrderSuccess':(context)=>OrderSuccessScreen(),
+        '/bookingform':(context)=>Bookings(),
+        '/bookingdata':(context)=>BookingDetailsPage()
 
       },
     );
