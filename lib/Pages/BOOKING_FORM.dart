@@ -13,7 +13,8 @@ class _BookingsState extends State<Bookings> {
   DateTime selectedDate = DateTime.now();
   String selectedTime = '1:00 AM'; // Default time selection
   String? selectedVehicleType;
-  List<String> selectedServices = [];
+  String? selectedService;
+  String? selectedSubService;
   final _formKey = GlobalKey<FormState>();
 
   final vehicleNumberController = TextEditingController();
@@ -26,18 +27,54 @@ class _BookingsState extends State<Bookings> {
   final addressController = TextEditingController();
 
   List<String> services = [
-    'Check the engine oil',
-    'Change the engine oil',
-    'Air filter replacement',
-    'Fuel filter replacement',
-    'Replace the aircon filter',
-    'Check brake fluid',
-    'Refill brake fluid',
-    'Check clutch fluid',
-    'Check tire conditions',
-    'Inspect timing belt or timing chain',
-    'Check the battery',
+    'Car Service',
+    'Denting & Painting',
+    'AC Services & Repair',
+    'Windshield &Lights',
+    'Clutch & Brakes',
+    'Exterior Clean',
+    'Auto Car Wash'
+
   ];
+
+  Map<String, List<String>> subServices = {
+    'Car Service': [
+      'Basic Service',
+      'Standard Service',
+      'Comprehensive Service'
+
+    ],
+    'Denting & Painting': [
+      'Minor Dent Repair',
+      'Full Body Repainting',
+      'Scratch and Paint Touch-Up',
+      'Panel Replacement and Painting',
+      'Rust treatment and Repainting'
+    ],
+    'AC Services & Repair': [
+      '',
+    ],
+
+    'Windshield &Lights': [
+      '',
+    ],
+
+    'Clutch & Brakes': [
+      '',
+    ],
+
+    'Exterior Clean': [
+      '',
+    ],
+    'Auto Car Wash': [
+      '',
+    ],
+
+
+
+
+
+  };
 
   List<String> vehicleTypes = [
     'Sedan',
@@ -132,32 +169,54 @@ class _BookingsState extends State<Bookings> {
                 ),
                 SizedBox(height: 20),
 
-                _buildTextField(vehicleNumberController, "Vehicle Number"),
+                _buildTextField(vehicleNumberController, "Vehicle Brand"),
                 SizedBox(height: 10),
-                _buildTextField(makeController, "Make"),
+                _buildTextField(makeController, "Model"),
                 SizedBox(height: 10),
-                _buildTextField(modelController, "Model"),
+                _buildTextField(modelController, "Year"),
                 SizedBox(height: 20),
 
-                Text("Type of Services", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Select Service", style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: 10),
-                Column(
-                  children: services.map((service) {
-                    return CheckboxListTile(
-                      title: Text(service),
-                      value: selectedServices.contains(service),
-                      onChanged: (bool? value) {
-                        setState(() {
-                          if (value == true) {
-                            selectedServices.add(service);
-                          } else {
-                            selectedServices.remove(service);
-                          }
-                        });
-                      },
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(border: OutlineInputBorder()),
+                  hint: Text("Select a Service"),
+                  value: selectedService,
+                  items: services.map((String service) {
+                    return DropdownMenuItem(
+                      value: service,
+                      child: Text(service),
                     );
                   }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedService = newValue;
+                      selectedSubService = null; // Reset sub-service when service changes
+                    });
+                  },
                 ),
+                SizedBox(height: 10),
+
+                if (selectedService != null) ...[
+                  Text("Select Sub-service", style: TextStyle(fontWeight: FontWeight.bold)),
+                  SizedBox(height: 10),
+                  DropdownButtonFormField<String>(
+                    decoration: InputDecoration(border: OutlineInputBorder()),
+                    hint: Text("Select a Sub-service"),
+                    value: selectedSubService,
+                    items: subServices[selectedService!]!.map((String subService) {
+                      return DropdownMenuItem(
+                        value: subService,
+                        child: Text(subService),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectedSubService = newValue;
+                      });
+                    },
+                  ),
+                ],
                 SizedBox(height: 20),
 
                 _buildTextField(specialInstructionsController, "Any Special Instructions", maxLines: 3),
@@ -187,7 +246,7 @@ class _BookingsState extends State<Bookings> {
                           vehicleNumber: vehicleNumberController.text,
                           make: makeController.text,
                           model: modelController.text,
-                          selectedServices: selectedServices,
+                          selectedServices: [selectedService!, selectedSubService!],
                           specialInstructions: specialInstructionsController.text,
                           name: nameController.text,
                           phone: phoneController.text,
@@ -208,7 +267,7 @@ class _BookingsState extends State<Bookings> {
                         await prefs.setString('phone', booking.phone);
                         await prefs.setString('email', booking.email);
                         await prefs.setString('address', booking.address);
-                        await prefs.setStringList('selectedServices', booking.selectedServices);
+                        await prefs.setStringList('selectedServices', [selectedService!, selectedSubService!]);
 
                         // Pass the booking instance to the BookingDetailsPage
                         Navigator.popAndPushNamed(
@@ -220,7 +279,6 @@ class _BookingsState extends State<Bookings> {
                     },
                     child: Text("Book Now"),
                   ),
-
                 ),
               ],
             ),

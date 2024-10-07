@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     {'image': 'assets/images/Brakes.png', 'label': 'Clutch & Brakes', 'route': '/Brakes'},
     {'image': 'assets/images/Exterior_clean.png', 'label': 'Exterior clean', 'route': '/Exterior'},
     {'image': 'assets/images/Auto_Clean.png', 'label': 'Auto Car Wash', 'route': '/AutoCarWash'},
-    {'image': 'assets/images/Oil_Change.png', 'label': 'Oil Change', 'route': '/OilChange'},
+    {'image': 'assets/images/Oil_Change.png', 'label': 'Oil Products', 'route': '/Oiling'},
   ];
 
   List<Map<String, dynamic>> _filteredServices = [];

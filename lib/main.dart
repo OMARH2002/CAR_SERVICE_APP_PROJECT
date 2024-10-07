@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         '/Windsheild': (context) => Windsheild(),
         '/Brakes': (context) => Brakes(),
         '/AutoCarWash': (context) => AutoCarWash(),
-        '/Oiling': (context) => OilChange(),
+        '/Oiling': (context) => OilProducts(),
         '/EditProfileData': (context) => EditProfileData(),
         '/Records': (context) => RecordsNav(),
         '/Veichles': (context) => VeichlesNav(),

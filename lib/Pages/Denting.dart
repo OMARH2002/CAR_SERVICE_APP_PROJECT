@@ -20,15 +20,14 @@ class _DentingState extends State<Denting> {
           children: [
             // Basic Service
             buildServiceCard(
-              title: 'Basic Service',
+              title: 'Minor Dent Repair',
               description: [
-                'Every 5000 Kms/3 Months',
-                'Takes 4 Hours',
-                '1 Month Warranty',
-                'Includes 9 Services',
+                'Fix small dents without affecting the car’s paint.',
+                'Takes 1-2 Hours',
+                'Price depending on size of dent and location'
               ],
-              price: ' Est: 3000 EGP',
-              imageUrl: 'assets/images/Basic_Service.jpg',
+              price: 'Est: 1500-4000 EGP  ',
+              imageUrl: 'assets/images/minor dent.jpg',
               onAdd: () {
                 Navigator.pushNamed(context, '/bookingform');
               },
@@ -37,15 +36,15 @@ class _DentingState extends State<Denting> {
 
             // Standard Service
             buildServiceCard(
-              title: 'Standard Service',
+              title: 'Full Body Repainting',
               description: [
-                'Every 10000 Kms/6 Months',
-                'Takes 6 Hours',
-                '1 Month Warranty',
-                'Includes 15 Services',
+                ' Restore your car"s original color or change it entirely',
+                    'professional full-body repainting.',
+                'Takes 3-5 Days',
+                'Price depending on car size and paint type',
               ],
-              price: ' Est: 7000 EGP',
-              imageUrl: 'assets/images/Standard_Service.jpg',
+              price: 'Est: 40,000-100,000 EGP',
+              imageUrl: 'assets/images/Full Body Repainting.jpg',
               onAdd: () {
                 Navigator.pushNamed(context, '/bookingform');
               },
@@ -54,20 +53,48 @@ class _DentingState extends State<Denting> {
 
             // Comprehensive Service
             buildServiceCard(
-              title: 'Comprehensive Service',
+              title: 'Scratch and Paint Touch-Up',
               description: [
-                'Every 20000 Kms/1 Year',
-                'Takes 8 Hours',
-                '1 Month Warranty',
-                'Includes 20 Services',
+                ' Repair scratches with precision touch-up paint that matches your car’s original color.',
+                'Takes 1-3 Hours',
               ],
-              price: ' Est: 15000 EGP',
-              imageUrl: 'assets/images/Comprehensive _service.jpg',
+              price: 'Est: 1500 EGP',
+              imageUrl: 'assets/images/car scratch.jpg',
               onAdd: () {
                 Navigator.pushNamed(context, '/bookingform');
               },
             ),
-          ],
+              SizedBox(height: 10),
+
+              // Comprehensive Service
+              buildServiceCard(
+              title: 'Panel Replacement and Painting',
+              description: [
+              ' Replace damaged parts and repaint them to match your car’s color.',
+              'Takes 1-2 Days',
+              'Price includes parts and labor',
+              ],
+              price: 'Est: 9,000-24,000 EGP ',
+              imageUrl: 'assets/images/Panel Replacement and Painting.jpg',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              }),
+              SizedBox(height: 10),
+
+              // Comprehensive Service
+              buildServiceCard(
+              title: ' Rust Treatment and Repainting',
+              description: [
+              'Treat rust-affected areas with anti-rust coating '
+                  'and repaint to restore the look and prevent further damage.',
+              'Takes 1-2 Days',
+              'Price depends on the affected area',
+              ],
+              price: 'Est:4,500-15,000 EGP',
+              imageUrl: 'assets/images/Comprehensive _service.jpg',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              })],
         ),
       ),
     );
