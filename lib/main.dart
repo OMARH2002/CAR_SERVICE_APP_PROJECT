@@ -22,8 +22,10 @@ import 'Pages/batteries.dart';
 import 'Pages/brakes.dart';
 import 'Pages/Autocarwash.dart';
 import 'Pages/exterior.dart';
+import 'Pages/help.dart';
 import 'Pages/insurance.dart';
 import 'Pages/interior.dart';
+import 'Pages/records_data_entry.dart';
 import 'Pages/windsheild.dart';
 
 void main() {
@@ -72,8 +74,9 @@ class MyApp extends StatelessWidget {
         '/CheckoutTwo':(context)=>CheckoutScreenTwo(),
         '/OrderSuccess':(context)=>OrderSuccessScreen(),
         '/bookingform':(context)=>Bookings(),
-        '/bookingdata':(context)=>BookingDetailsPage()
-
+        '/bookingdata':(context)=>BookingDetailsPage(),
+        '/RecordsEntry':(context)=>RecordsEntry(),
+        '/help':(context)=>HelpSupportPage()
       },
     );
   }

@@ -52,6 +52,8 @@ class _BookingsState extends State<Bookings> {
       'Rust treatment and Repainting'
     ],
     'AC Services & Repair': [
+      'AC Diagnostic Check',
+      '',
       '',
     ],
 

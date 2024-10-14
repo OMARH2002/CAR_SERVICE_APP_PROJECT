@@ -150,24 +150,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
-                children: [
-                  buildProfileOption(
+                children: [GestureDetector(
+                  onTap:(){
+                    Navigator.pushNamed(context, '/help');
+                  },
+                  child:buildProfileOption(
                     icon: Icons.help_outline,
                     title: 'Help & Support',
                     textColor: textColor,
                   ),
-                  Divider(),
-                  buildProfileOption(
-                    icon: Icons.contact_mail_outlined,
-                    title: 'Contact us',
-                    textColor: textColor,
-                  ),
-                  Divider(),
-                  buildProfileOption(
-                    icon: Icons.privacy_tip_outlined,
-                    title: 'Privacy policy',
-                    textColor: textColor,
-                  ),
+                ),
                 ],
               ),
             ),
