@@ -28,7 +28,7 @@ class _ACState extends State<AC> {
               'Service Duration: 30 minutes - 1 hour',
               ],
               price: 'Est: 500 - 1,000 EGP',
-              imageUrl: 'assets/images/Basic_Service.jpg',
+              imageUrl: 'assets/images/AC Diagnostic Check.jpg',
               onAdd: () {
                 Navigator.pushNamed(context, '/bookingform');
               },
@@ -44,7 +44,7 @@ class _ACState extends State<AC> {
                 'Price Depends on car model and ferion type'
               ],
               price: 'Est: 1,500 - 3,500 EGP',
-              imageUrl: 'assets/images/Standard_Service.jpg',
+              imageUrl: 'assets/images/AC Recharge.jpg',
               onAdd: () {
                 Navigator.pushNamed(context, '/bookingform');
               },
@@ -53,15 +53,31 @@ class _ACState extends State<AC> {
 
             // Comprehensive Service
             buildServiceCard(
-              title: 'Comprehensive Service',
+              title: 'AC Compressor Replacement',
               description: [
-                'Every 20000 Kms/1 Year',
-                'Takes 8 Hours',
-                '1 Month Warranty',
-                'Includes 20 Services',
+               'Replace AC compressor to restore proper air conditioning functionality.',
+                'Service Duration: 2-4 hours.',
+                'Price includes compressor and labor costs'
               ],
-              price: ' Est: 15000 EGP',
-              imageUrl: 'assets/images/Comprehensive _service.jpg',
+              price: 'Est: 10,000 - 25,000 EGP',
+              imageUrl: 'assets/images/AC Compressor Replacement.jpeg',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              },
+            ),
+
+            SizedBox(height: 10),
+
+            // Comprehensive Service
+            buildServiceCard(
+              title: 'AC System Leak Repair',
+              description: [
+                ' Detect and repair leaks in the AC system.',
+                'Service Duration: 1-3 hours',
+                'Price depending on the extent of the leak'
+              ],
+              price: 'Est: 1,500 - 5,000 EGP',
+              imageUrl: 'assets/images/AC System Leak Repair.jpg',
               onAdd: () {
                 Navigator.pushNamed(context, '/bookingform');
               },

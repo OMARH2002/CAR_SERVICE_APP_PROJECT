@@ -1,4 +1,3 @@
-import 'package:depci_grad_project/Pages/Checkout_one.dart';
 import 'package:flutter/material.dart';
 
 class Batteries extends StatefulWidget {
@@ -87,18 +86,21 @@ class _BatteriesState extends State<Batteries> {
               children: [
                 // Basic Service
                 buildServiceCard(
-                  title: 'All Season Tyre',
+                  title: 'Chloride Lithium Golf Car Battery',
                   description: [
-                    '205/55 R16',
-                    'Versatile option for moderate climates',
-                    '30,000 Km Warranty'
+                    'Battery Ampere: 100 Ampere',
+                    'Voltage Capacity: 51.2 Volt',
+                    'Battery Length: 560 mm',
+                    'Battery Width: 371 mm',
+                    'Battery Height: 243.5 mm',
+                    'Warranty: 5 Years'
                   ],
-                  price: '10,000 EGP Per Wheel',
-                  imageUrl: 'assets/images/205-55 R16.jpg',
+                  price: 'Price: 111,500 EGP',
+                  imageUrl: 'assets/images/chloride_lithium_golf_car_battery_.jpg',
                   onAdd: () {
                     _addToCart({
-                      'title': '205/55 R16',
-                      'price': '10,000 EGP',
+                      'title': 'Chloride Lithium Golf Car Battery',
+                      'price': '111,500 EGP',
                     });
                   },
                 ),
@@ -106,18 +108,19 @@ class _BatteriesState extends State<Batteries> {
 
                 // Standard Service
                 buildServiceCard(
-                  title: 'All Season Tyre',
+                  title: 'ACDelco Car Battery',
                   description: [
-                    '225/60 R17',
-                    ' Great balance between comfort and performance',
-                    '40,000 Km Warranty',
+                    'Battery Ampere Capacity: 88 Ampere',
+                    'Voltage Capacity: 12 Volt',
+                    'Positive Terminal: Right',
+                    'Warranty: 12 Months From Purchasing Date'
                   ],
-                  price: '9500 EGP Per Wheel',
-                  imageUrl: 'assets/images/205-55 R16.jpg',
+                  price: '4,850 EGP',
+                  imageUrl: 'assets/images/ACDelco Car Battery.jpg',
                   onAdd: () {
                     _addToCart({
-                      'title': '225/60 R17',
-                      'price': '9000 EGP',
+                      'title': 'ACDelco Car Battery',
+                      'price': '4,850 EGP',
                     });
                   },
                 ),
@@ -125,18 +128,19 @@ class _BatteriesState extends State<Batteries> {
 
                 // Comprehensive Service
                 buildServiceCard(
-                  title: 'Winter Tyre',
+                  title: 'Bosch Car Battery',
                   description: [
-                    '195/65R15',
-                    ' Ideal for compact cars in snowy condition',
-                    '35,000 KM Warranty',
+                    'Battery Ampere Capacity: 60 Ampere',
+                    'Voltage Capacity: 12 Volt',
+                    'Positive Terminal: Right',
+                    'Warranty: 12 Months From Purchasing Date'
                   ],
-                  price: '7000 EGP Per Wheel',
-                  imageUrl: 'assets/images/195-65R15.jpg',
+                  price: '3,900 EGP',
+                  imageUrl: 'assets/images/bosch_car_battery.jpg',
                   onAdd: () {
                     _addToCart({
-                      'title': '195/65R15',
-                      'price': '7000 EGP',
+                      'title': 'Bosch Car Battery',
+                      'price': '3,900 EGP',
                     });
 
                   },
@@ -145,90 +149,98 @@ class _BatteriesState extends State<Batteries> {
 
                 // Comprehensive Service
                 buildServiceCard(
-                    title: 'Winter Tyre',
+                    title: 'Chloride EFB Car Battery',
                     description: [
-                      '215/70R16',
-                      'Suitable for SUVs and light trucks',
-                      '35,000 KM Warranty',
+                      'Battery Ampere Capacity: 70 Ampere',
+                      'Voltage Capacity: 12 Volt',
+                      'Positive Terminal: Right',
+                      'Warranty: 2 Years From Purchase Date'
                     ],
-                    price: '8500 EGP Per Wheel',
-                    imageUrl: 'assets/images/215-70R16.png',
+                    price: '7,349 EGP',
+                    imageUrl: 'assets/images/chloride_efb_car_battery.jpg',
                     onAdd: () {
                       _addToCart({
-                        'title': '215/70R16',
-                        'price': '8500 EGP',
+                        'title': 'Chloride EFB Car Battery',
+                        'price': '7,349 EGP',
                       });
                     }),
                 SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
-                    title: 'Summer Tyre',
+                    title: 'Chloride Platinum Car Battery',
                     description: [
-                      '245/45R18',
-                      'High-performance tyre for sport cars',
-                      '60,000 KM Warranty',
+                      'Battery Ampere Capacity: 70 Ampere',
+                      'Voltage Capacity: 12 Volt',
+                      'Positive Terminal: Right',
+                      'Cold cranking Ampere: 720',
+                      'Reserve Capacity: 120',
+                      'Battery Length: 276mm',
+                     'Battery Width: 175mm',
+                      'Battery Height: 190.4mm',
+                      'Warranty:2 Years From Purchase Date'
                     ],
-                    price: '12,500 EGP Per Wheel',
-                    imageUrl: 'assets/images/245-45R18.jpg',
+                    price: '5,210 EGP',
+                    imageUrl: 'assets/images/chloride_platinum_car_battery.jpg',
                     onAdd: () {
                       _addToCart({
-                        'title': '245/45R18',
-                        'price': '12,500 EGP',
+                        'title': 'Chloride Platinum Car Battery',
+                        'price': '5,210 EGP',
                       });
                     }),
                 SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
-                    title: 'Summer Tyre',
+                    title: 'Chloride Gold Car Battery',
                     description: [
-                      '225/50R17',
-                      'Offers excellent handling and braking',
-                      '60,000 KM Warranty',
+                      'Battery Ampere Capacity: 150 Ampere',
+                      'Voltage Capacity: 12 Volt',
+                      'Warranty: 6 Months from Purchase Date',
                     ],
-                    price: '10,500 EGP Per Wheel',
-                    imageUrl: 'assets/images/225-50R17.png',
+                    price: '7,100 EGP',
+                    imageUrl: 'assets/images/Chloride Gold Car Battery.png',
                     onAdd: () {
                       _addToCart({
-                        'title': '225/50R17',
-                        'price': '10,500 EGP',
+                        'title': 'Chloride Gold Car Battery',
+                        'price': '7,100 EGP',
                       });
                     }),
                 SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
-                    title: 'Performance Tyre',
+                    title: 'ACDelco Car Battery',
                     description: [
-                      '275/30R20',
-                      'Designed for supercars with enhanced grip',
-                      '40,000 KM Warranty',
+                      'Battery Ampere Capacity: 35 Ampere',
+                      'Voltage Capacity: 12 Volt',
+                      'Warranty: 12 Months From Purchasing Date',
                     ],
-                    price: '18,000 EGP Per Wheel',
-                    imageUrl: 'assets/images/275-30R20.png',
+                    price: '2,825 EGP',
+                    imageUrl: 'assets/images/ACDelco Car Battery2.jpg',
                     onAdd: () {
                       _addToCart({
-                        'title': '275/30R20',
-                        'price': '18,000 EGP',
+                        'title': 'ACDelco Car Battery',
+                        'price': '2,825 EGP',
                       });
                     }),
                 SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
-                    title: 'Performance Tyre',
+                    title: 'Bosch Car Battery',
                     description: [
-                      '245/35R19',
-                      'Great for luxury vehicles aiming for sporty performance',
-                      '50,000 KM Warranty',
+                      'Battery Ampere Capacity: 70 Ampere',
+                     'Voltage Capacity: 12 Volt',
+                      'Cold cranking Ampere: 760',
+                      'Warranty: 18 Months From Purchasing Date'
                     ],
-                    price: '25,000 EGP Per Wheel',
-                    imageUrl: 'assets/images/245-35R19.png',
+                    price: '11,636 EGP',
+                    imageUrl: 'assets/images/bosch_car_battery_agm.jpg',
                     onAdd: () {
                       _addToCart({
-                        'title': '245/35R19',
-                        'price': '25,000 EGP',
+                        'title': 'Bosch Car Battery',
+                        'price': '11,636 EGP',
                       });
                     }),
               ] ),
