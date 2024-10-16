@@ -3,6 +3,7 @@ import 'package:depci_grad_project/Pages/Bottom_Nav.dart';
 import 'package:depci_grad_project/Pages/Checkout_one.dart';
 import 'package:depci_grad_project/Pages/Edit_Profile_Data.dart';
 import 'package:depci_grad_project/Pages/car_service.dart';
+import 'package:depci_grad_project/Pages/splash_screen.dart';
 import 'package:depci_grad_project/theme/ThemeNotifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Times New Roman',
         brightness: themeProvider.isDarkMode ? Brightness.dark : Brightness.light,
       ),
-      home: Scaffold(body: BottomPage()),
+      home: Scaffold(body: SplashScreen()),
       routes: {
         '/apphome':(context)=>MyApp(),
         '/CarService': (context) => CarService(),
