@@ -30,7 +30,7 @@ class _BookingsState extends State<Bookings> {
     'Car Service',
     'Denting & Painting',
     'AC Services & Repair',
-    'Interior Cleaning',
+    'Insurance',
     'Windshield &Lights',
     'Clutch & Brakes',
     'Exterior Clean',
@@ -40,9 +40,9 @@ class _BookingsState extends State<Bookings> {
 
   Map<String, List<String>> subServices = {
     'Car Service': [
-      'Basic Service',
       'Standard Service',
-      'Comprehensive Service'
+      'Advanced Service',
+      'Premium Service'
 
     ],
     'Denting & Painting': [
@@ -54,23 +54,24 @@ class _BookingsState extends State<Bookings> {
     ],
     'AC Services & Repair': [
       'AC Diagnostic Check',
-      'AC Recharge',
-      'AC Compressor Replacement',
-      'AC System Leak Repair',
-    ],
-    'Interior Cleaning':[
-      'Basic Interior Cleaning',
-      'Deep Interior Cleaning',
-      'Leather Seat Cleaning',
-      'Odor Removal Treatment'
+      '',
+      '',
     ],
 
     'Windshield &Lights': [
-      '',
+      'Standard service',
+      'Advanced service',
+      'Premium service',
     ],
-
+    'Insurance': [
+      'Standard coverage',
+      'Advanced coverage',
+      'Premium coverage',
+    ],
     'Clutch & Brakes': [
-      '',
+      'Standard service',
+      'Advanced service',
+      'Premium service',
     ],
 
     'Exterior Clean': [
