@@ -34,7 +34,6 @@ void main() {
     ChangeNotifierProvider(
       create: (context) => ThemeNotifier(),
       child: MyApp(),
-
     ),
   );
 }
@@ -47,37 +46,38 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Times New Roman',
-        brightness: themeProvider.isDarkMode ? Brightness.dark : Brightness.light,
+        brightness:
+            themeProvider.isDarkMode ? Brightness.dark : Brightness.light,
       ),
       home: Scaffold(body: SplashScreen()),
       routes: {
-        '/apphome':(context)=>MyApp(),
+        '/apphome': (context) => MyApp(),
         '/CarService': (context) => CarService(),
         'BottomPage': (context) => BottomPage(),
         '/Tyres': (context) => Tyres(),
         '/Denting': (context) => Denting(),
         '/AC': (context) => AC(),
         '/Interior': (context) => Interior(),
-        '/Exterior':(context)=>Exterior(),
+        '/Exterior': (context) => Exterior(),
         '/Batteries': (context) => Batteries(),
         '/Insurance': (context) => Insurance(),
         '/Windsheild': (context) => WindSheild(),
         '/Brakes': (context) => Brakes(),
         '/AutoCarWash': (context) => AutoCarWash(),
-        '/Oiling': (context) => OilProducts(),
+        '/Oiling': (context) => OilChange(),
         '/EditProfileData': (context) => EditProfileData(),
         '/Records': (context) => RecordsNav(),
         '/Veichles': (context) => VeichlesNav(),
         '/CarFormPage': (context) => CarFormPage(),
         '/ProfileScreen': (context) => ProfileScreen(),
         '/ProfileDataDisplay': (context) => ProfileDataDisplay(),
-        '/CheckoutOne':(context)=>CheckoutScreenOne(),
-        '/CheckoutTwo':(context)=>CheckoutScreenTwo(),
-        '/OrderSuccess':(context)=>OrderSuccessScreen(),
-        '/bookingform':(context)=>Bookings(),
-        '/bookingdata':(context)=>BookingDetailsPage(),
-        '/RecordsEntry':(context)=>RecordsEntry(),
-        '/help':(context)=>HelpSupportPage()
+        '/CheckoutOne': (context) => CheckoutScreenOne(),
+        '/CheckoutTwo': (context) => CheckoutScreenTwo(),
+        '/OrderSuccess': (context) => OrderSuccessScreen(),
+        '/bookingform': (context) => Bookings(),
+        '/bookingdata': (context) => BookingDetailsPage(),
+        '/RecordsEntry': (context) => RecordsEntry(),
+        '/help': (context) => HelpSupportPage()
       },
     );
   }

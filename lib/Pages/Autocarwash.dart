@@ -7,8 +7,147 @@ class AutoCarWash extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Auto car wash'),
-        backgroundColor: Colors.red,
+        title: Text('Exterior Cleaning'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            // Basic Service
+            buildServiceCard(
+              title: 'Standard Service',
+              description: [
+                ' Exterior wash with soap and water',
+                ' Soft-touch or touchless wash',
+                ' Rinse and air dry',
+                ' Basic tire and wheel wash',
+              ],
+              price: 'Est:1,000 EGP',
+              imageUrl: 'assets/images/carwash.png',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              },
+            ),
+            SizedBox(height: 10),
+
+            // Standard Service
+            buildServiceCard(
+              title: 'Enhanced Service',
+              description: [
+                ' Everything in Standard Carwash',
+                ' Underbody wash to remove dirt and salt',
+                ' Triple-foam wax for added shine and protection',
+                ' Tire shine application',
+                ' Spot-free rinse for a streak-free finish'
+              ],
+              price: 'Est: 3,000 EGP',
+              imageUrl: 'assets/images/carwash-blue.png',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              },
+            ),
+            SizedBox(height: 10),
+
+            // Comprehensive Service
+            buildServiceCard(
+              title: 'Premium Service',
+              description: [
+                ' Everything in Advanced Carwash',
+                ' Clear coat protectant for long-lasting shine',
+                ' Rain repellent treatment for windows and windshield',
+                ' Wheel and rim polish',
+                ' Interior vacuum and wipe down (if included in the package)',
+                ' Air freshener and detailing touches',
+              ],
+              price: ' Est: 5000 EGP',
+              imageUrl: 'assets/images/carwash-gold.png',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+// Helper method to build each service card
+  Widget buildServiceCard({
+    required String title,
+    required List<String> description,
+    required String price,
+    required String imageUrl,
+    required VoidCallback onAdd,
+  }) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Service Description (Expanded to avoid overflow)
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:
+                        description.map((desc) => Text('• $desc')).toList(),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    price,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Image and book Button
+            SizedBox(width: 16), // Add some space between text and image
+            Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    imageUrl,
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: onAdd,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Text('Book', style: TextStyle(color: Colors.black)),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
