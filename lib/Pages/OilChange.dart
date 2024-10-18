@@ -1,242 +1,82 @@
-import 'package:depci_grad_project/Pages/Checkout_one.dart';
 import 'package:flutter/material.dart';
 
-class OilProducts extends StatefulWidget {
-  @override
-  _OilProductsState createState() => _OilProductsState();
-}
-
-class _OilProductsState extends State<OilProducts> {
-  List<Map<String, String>> cart = [];
-  bool _isCartVisible = false;
-
-  void _addToCart(Map<String, String> service) {
-    setState(() {
-      cart.add(service);
-      _isCartVisible = true; // Show cart when an item is added
-    });
-  }
-
-  void _removeFromCart(int index) {
-    setState(() {
-      cart.removeAt(index);
-      if (cart.isEmpty) {
-        _isCartVisible = false; // Hide cart if no items are left
-      }
-    });
-    _refreshCart(context); // Refresh the cart when an item is removed
-  }
-
-  void _refreshCart(BuildContext context) {
-    Navigator.pop(context); // Close the current BottomSheet
-    _showCart(context); // Reopen the BottomSheet with updated cart
-  }
+class OilChange extends StatelessWidget {
+  const OilChange({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Oil Products'),
-          actions: [
-            if (_isCartVisible)
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.shopping_cart,
-                      size: 39,
-                    ),
-                    onPressed: () {
-                      _showCart(context);
-                    },
-                  ),
-                  if (cart.isNotEmpty)
-                    Positioned(
-                      right: 6,
-                      top: 6,
-                      child: Container(
-                        padding: EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                        ),
-                        constraints: BoxConstraints(
-                          minWidth: 24,
-                          minHeight: 24,
-                        ),
-                        child: Center(
-                          child: Text(
-                            cart.length.toString(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                ],
-              ),
+      appBar: AppBar(
+        title: Text('Oil Change'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            // Basic Service
+            buildServiceCard(
+              title: 'Conventional Motor Oil',
+              description: [
+                ' Provides basic engine lubrication',
+                ' Requires more frequent changes',
+                ' Suitable for normal driving conditions'
+              ],
+              price: 'Est:50 EGP',
+              imageUrl: 'assets/images/engine-oil.png',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              },
+            ),
+            SizedBox(height: 10),
+
+            // Standard Service
+            buildServiceCard(
+              title: 'Full Synthetic Motor Oil',
+              description: [
+                ' Handles extreme temperatures and high-stress conditions',
+                ' Longer oil change intervals',
+                ' Ideal for modern and high-performance vehicles'
+              ],
+              price: 'Est: 100 EGP',
+              imageUrl: 'assets/images/engine-oil-blue.png',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              },
+            ),
+            SizedBox(height: 10),
+
+            // Comprehensive Service
+            buildServiceCard(
+              title: 'High-Mileage Motor Oil',
+              description: [
+                ' Reduces oil consumption and engine wear',
+                ' Helps prevent leaks and protects aging engines',
+              ],
+              price: ' Est: 200 EGP',
+              imageUrl: 'assets/images/engine-oil-green.png',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              },
+            ),
+            buildServiceCard(
+              title: 'Synthetic Blend Motor Oil',
+              description: [
+                ' Provides better protection than conventional oil',
+                ' Ideal for vehicles driven in moderate conditions',
+              ],
+              price: ' Est: 200 EGP',
+              imageUrl: 'assets/images/engine-oil-gold.png',
+              onAdd: () {
+                Navigator.pushNamed(context, '/bookingform');
+              },
+            ),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ListView(
-              children: [
-                // Basic Service
-                buildServiceCard(
-                  title: 'All Season Tyre',
-                  description: [
-                    '205/55 R16',
-                    'Versatile option for moderate climates',
-                    '30,000 Km Warranty'
-                  ],
-                  price: '10,000 EGP Per Wheel',
-                  imageUrl: 'assets/images/205-55 R16.jpg',
-                  onAdd: () {
-                    _addToCart({
-                      'title': '205/55 R16',
-                      'price': '10,000 EGP',
-                    });
-                  },
-                ),
-                SizedBox(height: 10),
-
-                // Standard Service
-                buildServiceCard(
-                  title: 'All Season Tyre',
-                  description: [
-                    '225/60 R17',
-                    ' Great balance between comfort and performance',
-                    '40,000 Km Warranty',
-                  ],
-                  price: '9500 EGP Per Wheel',
-                  imageUrl: 'assets/images/205-55 R16.jpg',
-                  onAdd: () {
-                    _addToCart({
-                      'title': '225/60 R17',
-                      'price': '9000 EGP',
-                    });
-                  },
-                ),
-                SizedBox(height: 10),
-
-                // Comprehensive Service
-                buildServiceCard(
-                  title: 'Winter Tyre',
-                  description: [
-                    '195/65R15',
-                    ' Ideal for compact cars in snowy condition',
-                    '35,000 KM Warranty',
-                  ],
-                  price: '7000 EGP Per Wheel',
-                  imageUrl: 'assets/images/195-65R15.jpg',
-                  onAdd: () {
-                    _addToCart({
-                      'title': '195/65R15',
-                      'price': '7000 EGP',
-                    });
-
-                  },
-                ),
-                SizedBox(height: 10),
-
-                // Comprehensive Service
-                buildServiceCard(
-                    title: 'Winter Tyre',
-                    description: [
-                      '215/70R16',
-                      'Suitable for SUVs and light trucks',
-                      '35,000 KM Warranty',
-                    ],
-                    price: '8500 EGP Per Wheel',
-                    imageUrl: 'assets/images/215-70R16.png',
-                    onAdd: () {
-                      _addToCart({
-                        'title': '215/70R16',
-                        'price': '8500 EGP',
-                      });
-                    }),
-                SizedBox(height: 10),
-
-                // Comprehensive Service
-                buildServiceCard(
-                    title: 'Summer Tyre',
-                    description: [
-                      '245/45R18',
-                      'High-performance tyre for sport cars',
-                      '60,000 KM Warranty',
-                    ],
-                    price: '12,500 EGP Per Wheel',
-                    imageUrl: 'assets/images/245-45R18.jpg',
-                    onAdd: () {
-                      _addToCart({
-                        'title': '245/45R18',
-                        'price': '12,500 EGP',
-                      });
-                    }),
-                SizedBox(height: 10),
-
-                // Comprehensive Service
-                buildServiceCard(
-                    title: 'Summer Tyre',
-                    description: [
-                      '225/50R17',
-                      'Offers excellent handling and braking',
-                      '60,000 KM Warranty',
-                    ],
-                    price: '10,500 EGP Per Wheel',
-                    imageUrl: 'assets/images/225-50R17.png',
-                    onAdd: () {
-                      _addToCart({
-                        'title': '225/50R17',
-                        'price': '10,500 EGP',
-                      });
-                    }),
-                SizedBox(height: 10),
-
-                // Comprehensive Service
-                buildServiceCard(
-                    title: 'Performance Tyre',
-                    description: [
-                      '275/30R20',
-                      'Designed for supercars with enhanced grip',
-                      '40,000 KM Warranty',
-                    ],
-                    price: '18,000 EGP Per Wheel',
-                    imageUrl: 'assets/images/275-30R20.png',
-                    onAdd: () {
-                      _addToCart({
-                        'title': '275/30R20',
-                        'price': '18,000 EGP',
-                      });
-                    }),
-                SizedBox(height: 10),
-
-                // Comprehensive Service
-                buildServiceCard(
-                    title: 'Performance Tyre',
-                    description: [
-                      '245/35R19',
-                      'Great for luxury vehicles aiming for sporty performance',
-                      '50,000 KM Warranty',
-                    ],
-                    price: '25,000 EGP Per Wheel',
-                    imageUrl: 'assets/images/245-35R19.png',
-                    onAdd: () {
-                      _addToCart({
-                        'title': '245/35R19',
-                        'price': '25,000 EGP',
-                      });
-                    }),
-              ] ),
-
-        ) );
+      ),
+    );
   }
 
-  // Helper method to build each service card
+// Helper method to build each service card
   Widget buildServiceCard({
     required String title,
     required List<String> description,
@@ -269,9 +109,8 @@ class _OilProductsState extends State<OilProducts> {
                   SizedBox(height: 8),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: description
-                        .map((desc) => Text('• $desc'))
-                        .toList(),
+                    children:
+                        description.map((desc) => Text('• $desc')).toList(),
                   ),
                   SizedBox(height: 8),
                   Text(
@@ -286,7 +125,7 @@ class _OilProductsState extends State<OilProducts> {
               ),
             ),
 
-            // Image and ADD Button
+            // Image and book Button
             SizedBox(width: 16), // Add some space between text and image
             Column(
               children: [
@@ -308,92 +147,13 @@ class _OilProductsState extends State<OilProducts> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: Text('Add to cart', style: TextStyle(color: Colors.black)),
+                  child: Text('Book', style: TextStyle(color: Colors.black)),
                 ),
               ],
             ),
           ],
         ),
       ),
-    );
-  }
-
-  // Show cart as a modal bottom sheet
-  void _showCart(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true, // Ensure the bottom sheet can scroll
-      builder: (BuildContext context) {
-        return Container(
-          height: 400, // Set a fixed height for the BottomSheet
-          child: Column(
-            children: [
-              ListTile(
-                title: Text('Shopping Cart', style: TextStyle(fontSize: 24)),
-                trailing: IconButton(
-                  icon: Icon(Icons.clear),
-                  onPressed: () {
-                    Navigator.pop(context); // Close the bottom sheet
-                  },
-                ),
-              ),
-              Divider(),
-              Expanded( // Make the cart content scrollable
-                child: cart.isEmpty
-                    ? Center(child: Text('Your cart is empty'))
-                    : SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(cart.length, (index) {
-                      final service = cart[index];
-                      return ListTile(
-                        title: Text(service['title']!),
-                        subtitle: Text(service['price']!),
-                        trailing: IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () {
-                            _removeFromCart(index);
-                          },
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-              ),
-
-              // Checkout Button (only visible when there are items in the cart)
-              if (cart.isNotEmpty) // Check if cart is not empty
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: SizedBox(
-                    width: double.infinity, // Full-width button
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Handle checkout action here
-                        Navigator.pop(context);
-                        Navigator.pushNamed(context, '/CheckoutOne');// Close the bottom sheet
-                        // Navigate to checkout page or perform another action
-                      },
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.all(16), // Larger touch target
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20), // Rounded button
-                        ),
-                        backgroundColor: Colors.green, // Green checkout button
-                      ),
-                      child: Text(
-                        'Checkout',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

@@ -34,17 +34,12 @@ class _BookingsState extends State<Bookings> {
     'Windshield &Lights',
     'Clutch & Brakes',
     'Exterior Clean',
-    'Auto Car Wash'
-
+    'Auto Car Wash',
+    'Oil Change'
   ];
 
   Map<String, List<String>> subServices = {
-    'Car Service': [
-      'Standard Service',
-      'Advanced Service',
-      'Premium Service'
-
-    ],
+    'Car Service': ['Standard Service', 'Advanced Service', 'Premium Service'],
     'Denting & Painting': [
       'Minor Dent Repair',
       'Full Body Repainting',
@@ -57,7 +52,6 @@ class _BookingsState extends State<Bookings> {
       '',
       '',
     ],
-
     'Windshield &Lights': [
       'Standard service',
       'Advanced service',
@@ -73,18 +67,22 @@ class _BookingsState extends State<Bookings> {
       'Advanced service',
       'Premium service',
     ],
-
     'Exterior Clean': [
-      '',
+      'Standard cleaning',
+      'Advanced cleaning',
+      'Premium cleaning',
     ],
     'Auto Car Wash': [
-      '',
+      'Standard service',
+      'Advanced service',
+      'Premium service',
     ],
-
-
-
-
-
+    'Oil Change': [
+      'Conventional Motor Oil',
+      'Full Synthetic Motor Oil',
+      'High-Mileage Motor Oil',
+      'Synthetic Blend Motor Oil',
+    ],
   };
 
   List<String> vehicleTypes = [
@@ -128,7 +126,8 @@ class _BookingsState extends State<Bookings> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Select an Appointment Date", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Select an Appointment Date",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: 10),
                 Row(
                   children: [
@@ -146,22 +145,31 @@ class _BookingsState extends State<Bookings> {
                     Expanded(
                       child: DropdownButtonFormField(
                         value: selectedTime,
-                        items: ['1:00 AM', '2:00 AM', '3:00 AM', '4:00 AM', '7:00 AM', '8:00 AM']
-                            .map((time) => DropdownMenuItem(value: time, child: Text(time)))
+                        items: [
+                          '1:00 AM',
+                          '2:00 AM',
+                          '3:00 AM',
+                          '4:00 AM',
+                          '7:00 AM',
+                          '8:00 AM'
+                        ]
+                            .map((time) => DropdownMenuItem(
+                                value: time, child: Text(time)))
                             .toList(),
                         onChanged: (String? newValue) {
                           setState(() {
                             selectedTime = newValue!;
                           });
                         },
-                        decoration: InputDecoration(border: OutlineInputBorder()),
+                        decoration:
+                            InputDecoration(border: OutlineInputBorder()),
                       ),
                     ),
                   ],
                 ),
                 SizedBox(height: 20),
-
-                Text("Vehicle Type", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Vehicle Type",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: 10),
                 DropdownButtonFormField(
                   decoration: InputDecoration(border: OutlineInputBorder()),
@@ -179,15 +187,14 @@ class _BookingsState extends State<Bookings> {
                   },
                 ),
                 SizedBox(height: 20),
-
                 _buildTextField(vehicleNumberController, "Vehicle Brand"),
                 SizedBox(height: 10),
                 _buildTextField(makeController, "Model"),
                 SizedBox(height: 10),
                 _buildTextField(modelController, "Year"),
                 SizedBox(height: 20),
-
-                Text("Select Service", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Select Service",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: 10),
                 DropdownButtonFormField<String>(
                   decoration: InputDecoration(border: OutlineInputBorder()),
@@ -202,20 +209,22 @@ class _BookingsState extends State<Bookings> {
                   onChanged: (String? newValue) {
                     setState(() {
                       selectedService = newValue;
-                      selectedSubService = null; // Reset sub-service when service changes
+                      selectedSubService =
+                          null; // Reset sub-service when service changes
                     });
                   },
                 ),
                 SizedBox(height: 10),
-
                 if (selectedService != null) ...[
-                  Text("Select Sub-service", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text("Select Sub-service",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   SizedBox(height: 10),
                   DropdownButtonFormField<String>(
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     hint: Text("Select a Sub-service"),
                     value: selectedSubService,
-                    items: subServices[selectedService!]!.map((String subService) {
+                    items:
+                        subServices[selectedService!]!.map((String subService) {
                       return DropdownMenuItem(
                         value: subService,
                         child: Text(subService),
@@ -229,11 +238,12 @@ class _BookingsState extends State<Bookings> {
                   ),
                 ],
                 SizedBox(height: 20),
-
-                _buildTextField(specialInstructionsController, "Any Special Instructions", maxLines: 3),
+                _buildTextField(
+                    specialInstructionsController, "Any Special Instructions",
+                    maxLines: 3),
                 SizedBox(height: 20),
-
-                Text("Customer Information", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Customer Information",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: 10),
                 _buildTextField(nameController, "Name"),
                 SizedBox(height: 10),
@@ -243,7 +253,6 @@ class _BookingsState extends State<Bookings> {
                 SizedBox(height: 10),
                 _buildTextField(addressController, "Address"),
                 SizedBox(height: 20),
-
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -257,8 +266,12 @@ class _BookingsState extends State<Bookings> {
                           vehicleNumber: vehicleNumberController.text,
                           make: makeController.text,
                           model: modelController.text,
-                          selectedServices: [selectedService!, selectedSubService!],
-                          specialInstructions: specialInstructionsController.text,
+                          selectedServices: [
+                            selectedService!,
+                            selectedSubService!
+                          ],
+                          specialInstructions:
+                              specialInstructionsController.text,
                           name: nameController.text,
                           phone: phoneController.text,
                           email: emailController.text,
@@ -266,19 +279,26 @@ class _BookingsState extends State<Bookings> {
                         );
 
                         // Save data to SharedPreferences
-                        SharedPreferences prefs = await SharedPreferences.getInstance();
-                        await prefs.setString('selectedDate', booking.selectedDate.toString());
-                        await prefs.setString('selectedTime', booking.selectedTime);
-                        await prefs.setString('vehicleType', booking.vehicleType ?? '');
-                        await prefs.setString('vehicleNumber', booking.vehicleNumber);
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        await prefs.setString(
+                            'selectedDate', booking.selectedDate.toString());
+                        await prefs.setString(
+                            'selectedTime', booking.selectedTime);
+                        await prefs.setString(
+                            'vehicleType', booking.vehicleType ?? '');
+                        await prefs.setString(
+                            'vehicleNumber', booking.vehicleNumber);
                         await prefs.setString('make', booking.make);
                         await prefs.setString('model', booking.model);
-                        await prefs.setString('specialInstructions', booking.specialInstructions);
+                        await prefs.setString(
+                            'specialInstructions', booking.specialInstructions);
                         await prefs.setString('name', booking.name);
                         await prefs.setString('phone', booking.phone);
                         await prefs.setString('email', booking.email);
                         await prefs.setString('address', booking.address);
-                        await prefs.setStringList('selectedServices', [selectedService!, selectedSubService!]);
+                        await prefs.setStringList('selectedServices',
+                            [selectedService!, selectedSubService!]);
 
                         // Pass the booking instance to the BookingDetailsPage
                         Navigator.popAndPushNamed(
@@ -299,7 +319,8 @@ class _BookingsState extends State<Bookings> {
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String label, {int maxLines = 1}) {
+  Widget _buildTextField(TextEditingController controller, String label,
+      {int maxLines = 1}) {
     return TextFormField(
       controller: controller,
       maxLines: maxLines,
