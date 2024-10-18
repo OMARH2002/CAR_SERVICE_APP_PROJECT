@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class OrderSuccessScreen extends StatelessWidget {
+  const OrderSuccessScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +20,10 @@ class OrderSuccessScreen extends StatelessWidget {
                 height: 200,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Success Message
-            Text(
+            const Text(
               'Your order has been placed successfully',
               style: TextStyle(
                 fontSize: 22,
@@ -29,7 +31,7 @@ class OrderSuccessScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             // Secondary Message
             Text(
@@ -40,7 +42,7 @@ class OrderSuccessScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // Continue Shopping Button
             SizedBox(
@@ -50,13 +52,13 @@ class OrderSuccessScreen extends StatelessWidget {
                   Navigator.popAndPushNamed(context, '/apphome');
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Continue Shopping',
                   style: TextStyle(fontSize: 18,color: Colors.white),
                 ),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "710260678802",
+    "project_id": "carservices-37548",
+    "storage_bucket": "carservices-37548.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710260678802:android:aa22fa2266a1697ea9464b",
+        "android_client_info": {
+          "package_name": "com.example.depci_grad_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5bCs74s6vrZwl_LkibpwnSy2b07oNBSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

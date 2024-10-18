@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Batteries extends StatefulWidget {
+  const Batteries({super.key});
+
   @override
   _BatteriesState createState() => _BatteriesState();
 }
@@ -35,14 +37,14 @@ class _BatteriesState extends State<Batteries> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Batteries'),
+          title: const Text('Batteries'),
           actions: [
             if (_isCartVisible)
               Stack(
                 alignment: Alignment.center,
                 children: [
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.shopping_cart,
                       size: 39,
                     ),
@@ -55,19 +57,19 @@ class _BatteriesState extends State<Batteries> {
                       right: 6,
                       top: 6,
                       child: Container(
-                        padding: EdgeInsets.all(6),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(6),
+                        decoration: const BoxDecoration(
                           color: Colors.red,
                           shape: BoxShape.circle,
                         ),
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           minWidth: 24,
                           minHeight: 24,
                         ),
                         child: Center(
                           child: Text(
                             cart.length.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
@@ -104,7 +106,7 @@ class _BatteriesState extends State<Batteries> {
                     });
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // Standard Service
                 buildServiceCard(
@@ -124,7 +126,7 @@ class _BatteriesState extends State<Batteries> {
                     });
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
@@ -145,7 +147,7 @@ class _BatteriesState extends State<Batteries> {
 
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
@@ -164,7 +166,7 @@ class _BatteriesState extends State<Batteries> {
                         'price': '7,349 EGP',
                       });
                     }),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
@@ -188,7 +190,7 @@ class _BatteriesState extends State<Batteries> {
                         'price': '5,210 EGP',
                       });
                     }),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
@@ -206,7 +208,7 @@ class _BatteriesState extends State<Batteries> {
                         'price': '7,100 EGP',
                       });
                     }),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
@@ -224,7 +226,7 @@ class _BatteriesState extends State<Batteries> {
                         'price': '2,825 EGP',
                       });
                     }),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // Comprehensive Service
                 buildServiceCard(
@@ -273,22 +275,22 @@ class _BatteriesState extends State<Batteries> {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: description
                         .map((desc) => Text('• $desc'))
                         .toList(),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     price,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.green,
@@ -299,7 +301,7 @@ class _BatteriesState extends State<Batteries> {
             ),
 
             // Image and ADD Button
-            SizedBox(width: 16), // Add some space between text and image
+            const SizedBox(width: 16), // Add some space between text and image
             Column(
               children: [
                 ClipRRect(
@@ -311,7 +313,7 @@ class _BatteriesState extends State<Batteries> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 ElevatedButton(
                   onPressed: onAdd,
                   style: ElevatedButton.styleFrom(
@@ -320,7 +322,7 @@ class _BatteriesState extends State<Batteries> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: Text('Add to cart', style: TextStyle(color: Colors.black)),
+                  child: const Text('Add to cart', style: TextStyle(color: Colors.black)),
                 ),
               ],
             ),
@@ -336,23 +338,23 @@ class _BatteriesState extends State<Batteries> {
       context: context,
       isScrollControlled: true, // Ensure the bottom sheet can scroll
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
           height: 400, // Set a fixed height for the BottomSheet
           child: Column(
             children: [
               ListTile(
-                title: Text('Shopping Cart', style: TextStyle(fontSize: 24)),
+                title: const Text('Shopping Cart', style: TextStyle(fontSize: 24)),
                 trailing: IconButton(
-                  icon: Icon(Icons.clear),
+                  icon: const Icon(Icons.clear),
                   onPressed: () {
                     Navigator.pop(context); // Close the bottom sheet
                   },
                 ),
               ),
-              Divider(),
+              const Divider(),
               Expanded( // Make the cart content scrollable
                 child: cart.isEmpty
-                    ? Center(child: Text('Your cart is empty'))
+                    ? const Center(child: Text('Your cart is empty'))
                     : SingleChildScrollView(
                   child: Column(
                     children: List.generate(cart.length, (index) {
@@ -361,7 +363,7 @@ class _BatteriesState extends State<Batteries> {
                         title: Text(service['title']!),
                         subtitle: Text(service['price']!),
                         trailing: IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                           onPressed: () {
                             _removeFromCart(index);
                           },
@@ -386,13 +388,13 @@ class _BatteriesState extends State<Batteries> {
                         // Navigate to checkout page or perform another action
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.all(16), // Larger touch target
+                        padding: const EdgeInsets.all(16), // Larger touch target
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20), // Rounded button
                         ),
                         backgroundColor: Colors.green, // Green checkout button
                       ),
-                      child: Text(
+                      child: const Text(
                         'Checkout',
                         style: TextStyle(
                           fontSize: 18,

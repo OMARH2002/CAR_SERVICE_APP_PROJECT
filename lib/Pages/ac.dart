@@ -1,7 +1,8 @@
-import 'package:depci_grad_project/Pages/Checkout_one.dart';
 import 'package:flutter/material.dart';
 
 class AC extends StatefulWidget {
+  const AC({super.key});
+
   @override
   _ACState createState() => _ACState();
 }
@@ -13,7 +14,7 @@ class _ACState extends State<AC> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ac Services'),
+        title: const Text('Ac Services'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -33,7 +34,7 @@ class _ACState extends State<AC> {
                 Navigator.pushNamed(context, '/bookingform');
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             // Standard Service
             buildServiceCard(
@@ -49,7 +50,7 @@ class _ACState extends State<AC> {
                 Navigator.pushNamed(context, '/bookingform');
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             // Comprehensive Service
             buildServiceCard(
@@ -66,7 +67,7 @@ class _ACState extends State<AC> {
               },
             ),
 
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             // Comprehensive Service
             buildServiceCard(
@@ -113,22 +114,22 @@ class _ACState extends State<AC> {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: description
                         .map((desc) => Text('• $desc'))
                         .toList(),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     price,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.green,
@@ -139,7 +140,7 @@ class _ACState extends State<AC> {
             ),
 
             // Image and book Button
-            SizedBox(width: 16), // Add some space between text and image
+            const SizedBox(width: 16), // Add some space between text and image
             Column(
               children: [
                 ClipRRect(
@@ -151,7 +152,7 @@ class _ACState extends State<AC> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 ElevatedButton(
                   onPressed: onAdd,
                   style: ElevatedButton.styleFrom(
@@ -160,7 +161,7 @@ class _ACState extends State<AC> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: Text('Book', style: TextStyle(color: Colors.black)),
+                  child: const Text('Book', style: TextStyle(color: Colors.black)),
                 ),
               ],
             ),

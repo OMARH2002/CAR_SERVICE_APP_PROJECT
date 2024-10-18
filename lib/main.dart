@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'Pages/BOOKINGS.dart';
 import 'Pages/Car_data_entery.dart';
 import 'Pages/Denting.dart';
-import 'Pages/OilChange.dart';
+import 'Pages/OilProducts.dart';
 import 'Pages/Payment_Tab.dart';
 import 'Pages/Profie_Screen.dart';
 import 'Pages/ProfileDataDisplay.dart';
@@ -29,17 +29,20 @@ import 'Pages/interior.dart';
 import 'Pages/records_data_entry.dart';
 import 'Pages/windsheild.dart';
 
+
 void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeNotifier(),
-      child: MyApp(),
+      child: const MyApp(),
 
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeNotifier>(context);
@@ -49,31 +52,31 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Times New Roman',
         brightness: themeProvider.isDarkMode ? Brightness.dark : Brightness.light,
       ),
-      home: Scaffold(body: SplashScreen()),
+      home: const Scaffold(body: SplashScreen()),
       routes: {
-        '/apphome':(context)=>MyApp(),
+        '/apphome':(context)=>const MyApp(),
         '/CarService': (context) => CarService(),
-        'BottomPage': (context) => BottomPage(),
+        '/BottomPage': (context) => const BottomPage(),
         '/Tyres': (context) => Tyres(),
         '/Denting': (context) => Denting(),
         '/AC': (context) => AC(),
         '/Interior': (context) => Interior(),
-        '/Exterior':(context)=>Exterior(),
+        '/Exterior':(context)=>const Exterior(),
         '/Batteries': (context) => Batteries(),
         '/Insurance': (context) => Insurance(),
         '/Windsheild': (context) => Windsheild(),
         '/Brakes': (context) => Brakes(),
-        '/AutoCarWash': (context) => AutoCarWash(),
+        '/AutoCarWash': (context) => const AutoCarWash(),
         '/Oiling': (context) => OilProducts(),
-        '/EditProfileData': (context) => EditProfileData(),
-        '/Records': (context) => RecordsNav(),
-        '/Veichles': (context) => VeichlesNav(),
+        '/EditProfileData': (context) => const EditProfileData(),
+        '/Records': (context) => const RecordsNav(),
+        '/Veichles': (context) => const VeichlesNav(),
         '/CarFormPage': (context) => CarFormPage(),
         '/ProfileScreen': (context) => ProfileScreen(),
         '/ProfileDataDisplay': (context) => ProfileDataDisplay(),
         '/CheckoutOne':(context)=>CheckoutScreenOne(),
         '/CheckoutTwo':(context)=>CheckoutScreenTwo(),
-        '/OrderSuccess':(context)=>OrderSuccessScreen(),
+        '/OrderSuccess':(context)=>const OrderSuccessScreen(),
         '/bookingform':(context)=>Bookings(),
         '/bookingdata':(context)=>BookingDetailsPage(),
         '/RecordsEntry':(context)=>RecordsEntry(),

@@ -5,6 +5,8 @@ import 'BOOKINGS.dart';
 import 'booking_data_saved.dart';
 
 class Bookings extends StatefulWidget {
+  const Bookings({super.key});
+
   @override
   _BookingsState createState() => _BookingsState();
 }
@@ -31,6 +33,7 @@ class _BookingsState extends State<Bookings> {
     'Denting & Painting',
     'AC Services & Repair',
     'Interior Cleaning',
+    'Insurance',
     'Windshield &Lights',
     'Clutch & Brakes',
     'Exterior Clean',
@@ -64,20 +67,32 @@ class _BookingsState extends State<Bookings> {
       'Leather Seat Cleaning',
       'Odor Removal Treatment'
     ],
-
+    'Insurance': [
+      'Standard coverage',
+      'Advanced coverage',
+      'Premium coverage',
+],
     'Windshield &Lights': [
-      '',
+      'Standard service',
+      'Advanced service',
+      'Premium service',
     ],
 
     'Clutch & Brakes': [
-      '',
+      'Standard service',
+      'Advanced service',
+      'Premium service',
     ],
 
     'Exterior Clean': [
-      '',
+      'Standard Cleaning',
+      'Enhanced Cleaning',
+      'Premium Cleaning',
     ],
     'Auto Car Wash': [
-      '',
+      'Standard Service',
+      'Enhanced Service',
+      'Premium Service'
     ],
 
 
@@ -106,17 +121,18 @@ class _BookingsState extends State<Bookings> {
       firstDate: DateTime.now(),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != selectedDate)
+    if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
       });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Booking Form"),
+        title: const Text("Booking Form"),
         centerTitle: true,
       ),
       body: Padding(
@@ -127,8 +143,8 @@ class _BookingsState extends State<Bookings> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Select an Appointment Date", style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
+                const Text("Select an Appointment Date", style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     Expanded(
@@ -136,12 +152,12 @@ class _BookingsState extends State<Bookings> {
                         readOnly: true,
                         decoration: InputDecoration(
                           hintText: "${selectedDate.toLocal()}".split(' ')[0],
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                         ),
                         onTap: () => _selectDate(context),
                       ),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: DropdownButtonFormField(
                         value: selectedTime,
@@ -153,18 +169,18 @@ class _BookingsState extends State<Bookings> {
                             selectedTime = newValue!;
                           });
                         },
-                        decoration: InputDecoration(border: OutlineInputBorder()),
+                        decoration: const InputDecoration(border: OutlineInputBorder()),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-                Text("Vehicle Type", style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
+                const Text("Vehicle Type", style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 10),
                 DropdownButtonFormField(
-                  decoration: InputDecoration(border: OutlineInputBorder()),
-                  hint: Text("Select Vehicle Type"),
+                  decoration: const InputDecoration(border: OutlineInputBorder()),
+                  hint: const Text("Select Vehicle Type"),
                   items: vehicleTypes.map((String type) {
                     return DropdownMenuItem(
                       value: type,
@@ -177,20 +193,20 @@ class _BookingsState extends State<Bookings> {
                     });
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 _buildTextField(vehicleNumberController, "Vehicle Brand"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _buildTextField(makeController, "Model"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _buildTextField(modelController, "Year"),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-                Text("Select Service", style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
+                const Text("Select Service", style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 10),
                 DropdownButtonFormField<String>(
-                  decoration: InputDecoration(border: OutlineInputBorder()),
-                  hint: Text("Select a Service"),
+                  decoration: const InputDecoration(border: OutlineInputBorder()),
+                  hint: const Text("Select a Service"),
                   value: selectedService,
                   items: services.map((String service) {
                     return DropdownMenuItem(
@@ -205,14 +221,14 @@ class _BookingsState extends State<Bookings> {
                     });
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 if (selectedService != null) ...[
-                  Text("Select Sub-service", style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 10),
+                  const Text("Select Sub-service", style: TextStyle(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10),
                   DropdownButtonFormField<String>(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                    hint: Text("Select a Sub-service"),
+                    decoration: const InputDecoration(border: OutlineInputBorder()),
+                    hint: const Text("Select a Sub-service"),
                     value: selectedSubService,
                     items: subServices[selectedService!]!.map((String subService) {
                       return DropdownMenuItem(
@@ -227,21 +243,21 @@ class _BookingsState extends State<Bookings> {
                     },
                   ),
                 ],
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 _buildTextField(specialInstructionsController, "Any Special Instructions", maxLines: 3),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-                Text("Customer Information", style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
+                const Text("Customer Information", style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 10),
                 _buildTextField(nameController, "Name"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _buildTextField(phoneController, "Phone"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _buildTextField(emailController, "Email"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _buildTextField(addressController, "Address"),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 SizedBox(
                   width: double.infinity,
@@ -287,7 +303,7 @@ class _BookingsState extends State<Bookings> {
                         );
                       }
                     },
-                    child: Text("Book Now"),
+                    child: const Text("Book Now"),
                   ),
                 ),
               ],
@@ -304,7 +320,7 @@ class _BookingsState extends State<Bookings> {
       maxLines: maxLines,
       decoration: InputDecoration(
         labelText: label,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
